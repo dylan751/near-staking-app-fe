@@ -4,7 +4,7 @@ import {
     wallet,
     parseTokenAmount,
     parseTokenWithDecimals,
-    formatNumber,
+    formatNumber, login,
 } from "~utils/near";
 import ftContract from "~utils/ft-contract";
 import {getTokenMetadata} from "~utils/token";
@@ -103,6 +103,7 @@ function StakingPage() {
     }
 
     const handleStakeToken = async () => {
+        if (!wallet.isSignedIn()) await login();
         if (!stakeValue || stakeValue <= 0 || stakeValue > balance) return;
         setStakeLoading(true);
         try {
@@ -115,6 +116,7 @@ function StakingPage() {
     }
 
     const handleUnstakeToken = async () => {
+        if (!wallet.isSignedIn()) await login();
       if (!unstakeValue || unstakeValue <= 0 || unstakeValue > parseTokenWithDecimals(stakingAccount.stakeBalance, getTokenMetadata("VBIC").decimals)) return;
       setUnstakeLoading(true);
       try {
@@ -127,6 +129,7 @@ function StakingPage() {
     }
 
     const handleClaimReward = async () => {
+        if (!wallet.isSignedIn()) await login();
         if (parseTokenWithDecimals(stakingAccount.reward, getTokenMetadata("VBIC").decimals) < 1) return;
         setClaimLoading(true);
         try {
@@ -139,6 +142,7 @@ function StakingPage() {
     }
 
     const handleWithdraw = async () => {
+        if (!wallet.isSignedIn()) await login();
         if (!stakingAccount.canWithdraw || stakingAccount.unstakeBalance == 0) return;
         setWithdrawLoading(true);
         try {

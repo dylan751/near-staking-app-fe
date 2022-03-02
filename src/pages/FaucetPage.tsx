@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {IntervalSpinner} from "~components/spiner/IntervalSpinner";
-import {formatNumber, parseTokenAmount, parseTokenWithDecimals, wallet} from "~utils/near";
+import {formatNumber, login, parseTokenAmount, parseTokenWithDecimals, wallet} from "~utils/near";
 import {getTokenMetadata} from "~utils/token";
 import {InputNumber} from "antd";
 import {MyButton} from "~components/button";
@@ -70,10 +70,11 @@ const FaucetPage = () => {
         let maxSharePerAccount = parseTokenWithDecimals(faucetInfo.maxSharePerAccount, getTokenMetadata("VBIC").decimals);
         let totalBalance = parseTokenWithDecimals(faucetInfo.totalBalanceShare, getTokenMetadata("VBIC").decimals);
 
-        return !faucetValue || totalBalance == 0 || totalBalance <= faucetValue || currentShared == maxSharePerAccount || currentShared + faucetValue > maxSharePerAccount;
+        return !wallet.isSignedIn() || !faucetValue || totalBalance == 0 || totalBalance <= faucetValue || currentShared == maxSharePerAccount || currentShared + faucetValue > maxSharePerAccount;
     }
 
     const handleFaucet = async () => {
+        if (!wallet.isSignedIn()) await login();
         if (isDisable()) return;
         setFaucetLoading(true);
         try {
