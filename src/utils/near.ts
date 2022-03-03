@@ -13,7 +13,7 @@ export const near = new Near({
     ...config,
 });
 
-export const STAKING_STORAGE_AMOUNT = '0.1';
+export const STAKING_STORAGE_AMOUNT = '0.01';
 export const FT_STORAGE_AMOUNT = '0.01';
 export const ONE_YOCTO_NEAR = '0.000000000000000000000001';
 
