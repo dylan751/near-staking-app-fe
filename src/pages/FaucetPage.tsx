@@ -3,17 +3,9 @@ import {IntervalSpinner} from "~components/spiner/IntervalSpinner";
 import {formatNumber, login, parseTokenAmount, parseTokenWithDecimals, wallet} from "~utils/near";
 import {getTokenMetadata} from "~utils/token";
 import {InputNumber} from "antd";
-import {MyButton} from "~components/button";
+import {MyButton, MaxButton} from "~components/button";
 import {faucet, faucetContract} from "~utils/faucet-contract";
-import {withdraw} from "~utils/staking-contract";
-
-const MaxButton = (props: any) => {
-    return (
-      <span onClick={() => {
-          props.onClick(props.value)
-      }} className={"text-xs cursor-pointer"}>MAX</span>
-    )
-}
+import {CreditCardOutlined} from "@ant-design/icons";
 
 const FaucetPage = () => {
     const [faucetInfo, setFaucetInfo] = useState(
@@ -108,11 +100,12 @@ const FaucetPage = () => {
               <div className={"bg-cardBg rounded-2xl p-5 mb-2"}>
                   <div className={"input-form mt-5"}>
                       <p className="flex flex-row items-center text-primaryText mb-2">
+                          <CreditCardOutlined />
                           <span className="text-primaryText mr-2 ml-1">Shared balance:</span>
                           {formatNumber(parseTokenWithDecimals(accountBalanceShare, getTokenMetadata("VBIC").decimals))}
                           <img className="mr-1 ml-2" style={{width: 15, height: 15}} src={getTokenMetadata("VBIC").icon} alt=""/><span className="text-primary">VBIC</span>
                       </p>
-                      <InputNumber type={"number"} className={"staking-input font-bold mb-4 rounded"} addonAfter={<MaxButton onClick={handleMaxButton} />} value={faucetValue} onChange={(value) => setFaucetValue(value)} defaultValue={0} />
+                      <InputNumber min={0} className={"staking-input font-bold mb-4 rounded"} addonAfter={<MaxButton onClick={handleMaxButton} />} value={faucetValue} onChange={(value) => setFaucetValue(value)} defaultValue={0} />
 
                       <p className="text-xs text-primaryText mb-1">
                           {

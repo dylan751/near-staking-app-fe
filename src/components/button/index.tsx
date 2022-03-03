@@ -23,6 +23,15 @@ const MyButton = (props: { loading: boolean, disable: boolean, text: string, onC
     )
 }
 
+const MaxButton = (props: any) => {
+    return (
+      <span onClick={() => {
+          props.onClick(props.value)
+      }} className={"text-xs cursor-pointer"}>MAX</span>
+    )
+}
+
 export {
-    MyButton
+    MyButton,
+    MaxButton
 }

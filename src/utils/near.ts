@@ -77,7 +77,7 @@ export function parseTokenWithDecimals(amount: number, decimals: number) {
 }
 
 export function parseTokenAmount(amount: number, decimals: number) {
-    return amount * Math.pow(10, decimals);
+    return parseInt(`${amount}${Math.pow(10, decimals).toLocaleString('fullwide', {useGrouping:false}).substring(1)}`);
 }
 
 export function formatNumber(num: number) {

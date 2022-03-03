@@ -10,18 +10,11 @@ import ftContract from "~utils/ft-contract";
 import {getTokenMetadata} from "~utils/token";
 import {harvest, stakeToken, stakingContract, unstake, withdraw} from "~utils/staking-contract";
 import moment from "moment";
-import {MyButton} from "~components/button";
+import {MyButton, MaxButton} from "~components/button";
 import {IntervalSpinner} from "~components/spiner/IntervalSpinner";
+import {CreditCardOutlined} from "@ant-design/icons";
 
 const { TabPane } = Tabs;
-
-const MaxButton = (props: any) => {
-    return (
-      <span onClick={() => {
-          props.onClick(props.value)
-      }} className={"text-xs cursor-pointer"}>MAX</span>
-    )
-}
 
 
 function StakingPage() {
@@ -98,7 +91,7 @@ function StakingPage() {
             getStakingAccountInfo(),
             getPoolInfo()
         ]).catch(e => {
-            console.log("Error", e);
+
         })
     }
 
@@ -200,11 +193,12 @@ function StakingPage() {
                             <TabPane key="stake">
                                 <div className={"input-form mt-5"}>
                                     <p className="flex flex-row items-center text-primaryText mb-2">
+                                        <CreditCardOutlined />
                                         <span className="text-primaryText mr-2 ml-1">Balance:</span>
                                         {formatNumber(balance)}
                                         <img className="mr-1 ml-2" style={{width: 15, height: 15}} src={getTokenMetadata("VBIC").icon} alt=""/><span className="text-primary">VBIC</span>
                                     </p>
-                                    <InputNumber type={"number"} className={"staking-input font-bold mb-4 rounded"} addonAfter={<MaxButton onClick={() => setStakeValue(balance)} />} value={stakeValue} onChange={(value) => setStakeValue(value)} defaultValue={0} />
+                                    <InputNumber min={0} className={"staking-input font-bold mb-4 rounded"} addonAfter={<MaxButton onClick={() => setStakeValue(balance)} />} value={stakeValue} onChange={(value) => setStakeValue(value)} defaultValue={0} />
 
                                     <p className="text-xs text-primaryText mb-1"><span>Unstaked tokens will be made available pending a release period of ~12hrs (1 epochs).</span></p>
                                     <MyButton onClick={handleStakeToken} loading={stakeLoading} disable={
@@ -215,11 +209,12 @@ function StakingPage() {
                             <TabPane key="unstake">
                                 <div className={"input-form mt-5"}>
                                     <p className="flex flex-row items-center text-primaryText mb-2">
+                                        <CreditCardOutlined />
                                         <span className="text-primaryText mr-2 ml-1">Staked balance:</span>
                                         {formatNumber(parseTokenWithDecimals(stakingAccount.stakeBalance, getTokenMetadata("VBIC").decimals))}
                                         <img className="mr-1 ml-2" style={{width: 15, height: 15}} src={getTokenMetadata("VBIC").icon} alt=""/><span className="text-primary">VBIC</span>
                                     </p>
-                                    <InputNumber type={"number"} className={"staking-input font-bold mb-4 rounded"} addonAfter={<MaxButton onClick={() => setUnstakeValue(parseTokenWithDecimals(stakingAccount.stakeBalance, getTokenMetadata("VBIC").decimals))} />} value={unstakeValue} onChange={(value) => setUnstakeValue(value)} defaultValue={0} />
+                                    <InputNumber min={0} className={"staking-input font-bold mb-4 rounded"} addonAfter={<MaxButton onClick={() => setUnstakeValue(parseTokenWithDecimals(stakingAccount.stakeBalance, getTokenMetadata("VBIC").decimals))} />} value={unstakeValue} onChange={(value) => setUnstakeValue(value)} defaultValue={0} />
 
                                     <p className="text-xs text-primaryText mb-1">Unstaked tokens will be made available pending a release period of ~12hrs (1 epochs).</p>
                                     <MyButton onClick={handleUnstakeToken} loading={unstakeLoading} disable={

@@ -733,6 +733,10 @@ input[type='range']::-webkit-slider-thumb {
   font-size: 20px;
   font-weight: bold;
 }
+.staking-input.ant-input-number-disabled {
+  color: white;
+  background: transparent;
+}
 .staking-tabs .ant-tabs-nav {
   display: none;
 }
