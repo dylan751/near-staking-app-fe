@@ -71,13 +71,49 @@ export const logout = () => {
     window.location.replace(window.location.origin + window.location.pathname);
 }
 
+/**
+ * Parse token amount to human readable value
+ * @param amount
+ * @param decimals
+ */
 export function parseTokenWithDecimals(amount: number, decimals: number) {
     let amountD = amount / Math.pow(10, decimals);
     return Math.floor(amountD * 100) / 100;
 }
 
+/**
+ * Parse token balance to token amount for transfer
+ * @param amount
+ * @param decimals
+ */
 export function parseTokenAmount(amount: number, decimals: number) {
-    return parseInt(`${amount}${Math.pow(10, decimals).toLocaleString('fullwide', {useGrouping:false}).substring(1)}`);
+    let parsedNumber: {dec: number, num: number} = parseFloatToInt(amount);
+    let decBN = new BN(decimals - parsedNumber.dec);
+    let ten = new BN(10);
+    let amountBN = new BN(parsedNumber.num);
+    return amountBN.mul(ten.pow(decBN));
+}
+
+/**
+ * Return int number and decimals
+ * @param num float number
+ */
+function parseFloatToInt(num: number) {
+    let numString: string[] = num.toString().split(".");
+
+    if (numString.length == 1) {
+        return {
+            num: parseInt(numString[0]),
+            dec: 0
+        };
+    }
+
+    if (numString.length == 2) {
+        return {
+            num: parseInt(numString.join("")),
+            dec: numString[1].length
+        }
+    }
 }
 
 export function formatNumber(num: number) {

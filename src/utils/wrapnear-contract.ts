@@ -17,7 +17,6 @@ const wrapNearContract = new Contract(
 )
 
 const depositNear = async (amount: number) => {
-    console.log("Amount", amount);
     // Execute multi transaction: 1. deposit staking storage, 2. ft transfer call
     let depositNear: Transaction = {
         receiverId: config.WRAP_NEAR_CONTRACT,
@@ -36,7 +35,6 @@ const depositNear = async (amount: number) => {
     // Check storage balance
     //@ts-ignore
     let storageBalance: any = await wrapNearContract.storage_balance_of({ account_id: wallet.getAccountId() });
-    console.log("Storage: ", storageBalance);
 
     if (!storageBalance || storageBalance.total == '0') {
         let stakingDepositStorage: Transaction = {
@@ -60,7 +58,6 @@ const depositNear = async (amount: number) => {
 }
 
 const withdrawNear = async (amount: number) => {
-    console.log("Data:", parseNearAmount(amount.toString()))
     //@ts-ignore
     await wrapNearContract.near_withdraw(
       { amount: parseNearAmount(amount.toString()) },
