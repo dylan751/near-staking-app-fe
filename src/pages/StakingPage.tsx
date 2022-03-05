@@ -163,7 +163,7 @@ function StakingPage() {
                 <div className={"flex flex-col mt-5 justify-between"}>
                     <div className={"flex flex-row justify-between mb-2 bg-cardBg rounded-2xl p-5 w-full"}>
                         <p className={"text-base text-primaryText"}>Staking APR</p>
-                        <p className={"text-2xl text-white"}>15%</p>
+                        <p className={"text-2xl text-white"}>18%</p>
                     </div>
                     <div className={"flex flex-col justify-between mb-2 bg-cardBg rounded-2xl p-5 w-full"}>
                         <p className={"text-base text-primary mb-4"}>{ wallet.getAccountId() }</p>
