@@ -49,13 +49,13 @@ const MainLayout = (props: any) => {
                   <div className={"flex-1 xs:hidden sm:hidden md:hidden"}>
                       <ul className={"flex flex-row justify-center items-center mb-0"}>
                           <li>
-                              <Link className={`p-4 text-lg ${isSelected("/swap") ? "border-b-2 border-greenColor text-greenColor" : "hover:border-b-2 hover:border-greenColor hover:text-greenColor"} text-gray-400 cursor-pointer`} to={"/swap"}>Swap</Link>
+                              <Link className={`p-4 text-lg ${isSelected("/") ? "border-b-2 border-greenColor text-greenColor" : "hover:border-b-2 hover:border-greenColor hover:text-greenColor"} text-gray-400 cursor-pointer`} to={"/"}>Swap</Link>
                           </li>
                           <li>
                               <Link className={`p-4 text-lg ${isSelected("/pools") ? "border-b-2 border-greenColor text-greenColor" : "hover:border-b-2 hover:border-greenColor hover:text-greenColor"} text-gray-400 cursor-pointer`} to={"/pools"}>Pools</Link>
                           </li>
                           <li>
-                              <Link className={`p-4 text-lg ${isSelected("/") ? "border-b-2 border-greenColor text-greenColor" : "hover:border-b-2 hover:border-greenColor hover:text-greenColor"} text-gray-400 cursor-pointer`} to={"/"}>Staking</Link>
+                              <Link className={`p-4 text-lg ${isSelected("/staking") ? "border-b-2 border-greenColor text-greenColor" : "hover:border-b-2 hover:border-greenColor hover:text-greenColor"} text-gray-400 cursor-pointer`} to={"/staking"}>Staking</Link>
                           </li>
                           <li>
                               <Link className={`p-4 text-lg ${isSelected("/faucet") ? "border-b-2 border-greenColor text-greenColor" : "hover:border-b-2 hover:border-greenColor hover:text-greenColor"} text-gray-400 cursor-pointer`} to={"/faucet"}>Faucet</Link>

@@ -87,7 +87,7 @@ export function parseTokenWithDecimals(amount: number, decimals: number) {
  * @param decimals
  */
 export function parseTokenAmount(amount: number, decimals: number) {
-    let parsedNumber: {dec: number, num: number} = parseFloatToInt(amount);
+    let parsedNumber: { dec: number; num: number } = parseFloatToInt(amount);
     let decBN = new BN(decimals - parsedNumber.dec);
     let ten = new BN(10);
     let amountBN = new BN(parsedNumber.num);
@@ -99,6 +99,10 @@ export function parseTokenAmount(amount: number, decimals: number) {
  * @param num float number
  */
 function parseFloatToInt(num: number) {
+    if (!num) return {
+        num: 0,
+        dec: 0
+    };
     let numString: string[] = num.toString().split(".");
 
     if (numString.length == 1) {
@@ -115,6 +119,42 @@ function parseFloatToInt(num: number) {
         }
     }
 }
+
+export const toReadableNumber = (
+  decimals: number,
+  number: string = '0'
+): number => {
+    if (!decimals) return new BN(number).toNumber();
+
+    const wholeStr = number.substring(0, number.length - decimals) || '0';
+    const fractionStr = number
+      .substring(number.length - decimals)
+      .padStart(decimals, '0')
+      .substring(0, decimals);
+
+    let data = `${wholeStr}.${fractionStr}`.replace(/\.?0+$/, '');
+    let decimalNum = data.split(".");
+
+    return decimalNum.length == 1 ? parseInt(decimalNum[0]) : parseFloat(`${decimalNum[0]}.${decimalNum[1].substring(0, 2)}`);
+};
+
+export const toReadableNumberString = (
+  decimals: number,
+  number: string = '0'
+): string => {
+    if (!decimals) return number;
+
+    const wholeStr = number.substring(0, number.length - decimals) || '0';
+    const fractionStr = number
+      .substring(number.length - decimals)
+      .padStart(decimals, '0')
+      .substring(0, decimals);
+
+    let data = `${wholeStr}.${fractionStr}`.replace(/\.?0+$/, '');
+    let decimalNum = data.split(".");
+    return decimalNum.length == 1 ? formatNumber(parseInt(decimalNum[0])) : `${formatNumber(parseInt(decimalNum[0]))}.${decimalNum[1].substring(0, 2)}`;
+};
+
 
 export function formatNumber(num: number) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')

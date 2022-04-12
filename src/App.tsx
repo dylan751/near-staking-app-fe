@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import StakingPage from './pages/StakingPage';
+import SwapPage from "~pages/SwapPage";
 import MainLayout from "~components/layouts/MainLayout";
 import FaucetPage from "~pages/FaucetPage";
 import WrapNearPage from "~pages/WrapNearPage";
@@ -11,7 +12,7 @@ function App() {
         <MainLayout>
             <div className="relative pb-24 overflow-x-hidden xs:flex xs:flex-col md:flex md:flex-col">
                 <Switch>
-                    <Route path="/" exact component={AutoHeight(StakingPage)} />
+                    <Route path="/" exact component={AutoHeight(SwapPage)} />
                     <Route path="/staking" component={AutoHeight(StakingPage)} />
                     <Route path="/faucet" component={AutoHeight(FaucetPage)} />
                     <Route path="/wrap-near" component={AutoHeight(WrapNearPage)} />

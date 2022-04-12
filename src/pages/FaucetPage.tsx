@@ -70,6 +70,7 @@ const FaucetPage = () => {
         if (isDisable()) return;
         setFaucetLoading(true);
         try {
+            // @ts-ignore
             await faucet(parseTokenAmount(faucetValue, getTokenMetadata("VBIC").decimals).toLocaleString('fullwide', {useGrouping:false}));
         } catch (e) {
             console.log("Error", e);

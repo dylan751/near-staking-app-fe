@@ -21,6 +21,7 @@ const stakingContract = new Contract(
 
 const stakeToken = async (amount: string) => {
     // Execute multi transaction: 1. deposit staking storage, 2. ft transfer call
+    // batch transaction
     let ftTransferCall: Transaction = {
         receiverId: config.VBI_FT_CONTRACT,
         functionCalls: [

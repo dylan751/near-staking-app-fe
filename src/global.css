@@ -745,3 +745,10 @@ input[type='range']::-webkit-slider-thumb {
   background: linear-gradient(rgb(0, 198, 162) 0%, rgb(0, 139, 114) 100%);
   border-radius: 5px;
 }
+.select-token-wrap {
+  backdrop-filter: blur(20px);
+}
+.select-token-wrap .ant-modal-content {
+  background: none;
+  box-shadow: none;
+}
