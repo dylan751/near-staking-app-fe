@@ -129,6 +129,8 @@ const SwapPage = () => {
     useEffect(() => {
         if (inAmountValue.gt(new BN(0))) {
             getReturnSwap();
+        } else {
+            setOutAmountValue(new BN(0))
         }
     }, [inAmountValue])
 
