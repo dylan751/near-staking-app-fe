@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
 }
@@ -177,6 +181,11 @@ input[type='number'] {
 
 .hide-scrollbar::-webkit-scrollbar-thum {
   background: transparent;
+}
+
+.app {
+  max-width: 40rem;
+  margin: 0 auto;
 }
 
 .status-bar {
@@ -677,7 +686,9 @@ input[type='range']::-webkit-slider-thumb {
 .toStableTipAnimation {
   animation: opacityAni 1s ease both;
 }
-.ant-button-hover-white:hover, .ant-button-hover-white:active, .ant-button-hover-white:focus {
+.ant-button-hover-white:hover,
+.ant-button-hover-white:active,
+.ant-button-hover-white:focus {
   color: white;
 }
 .radio-stake {
@@ -695,13 +706,15 @@ input[type='range']::-webkit-slider-thumb {
 }
 .radio-stake .ant-radio-button-wrapper-checked {
   --tw-bg-opacity: 1;
-  background-color: rgba(41,55,65,var(--tw-bg-opacity));
+  background-color: rgba(41, 55, 65, var(--tw-bg-opacity));
   border-radius: 8px;
   color: white;
 }
 
-.radio-stake .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active,
-.radio-stake .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+.radio-stake
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active,
+.radio-stake
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
   color: white;
 }
 
@@ -712,18 +725,18 @@ input[type='range']::-webkit-slider-thumb {
   padding: 5px;
   width: 100%;
   --tw-bg-opacity: 0.2;
-  background-color: rgba(0,0,0,var(--tw-bg-opacity));
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
 }
 .staking-input {
-
 }
 .staking-input .ant-input-number-group-addon {
   border: none;
   --tw-bg-opacity: 0.2;
-  background-color: rgba(0,0,0,var(--tw-bg-opacity));
+  background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
   height: 10px;
 }
-.staking-input .ant-input-number, .staking-input .ant-input-number-focused {
+.staking-input .ant-input-number,
+.staking-input .ant-input-number-focused {
   border: none;
   outline: none;
   box-shadow: none;

@@ -22,8 +22,8 @@ function getConfig(env: string) {
                 walletUrl: 'https://wallet.testnet.near.org',
                 helperUrl: 'https://helper.testnet.near.org',
                 explorerUrl: 'https://explorer.testnet.near.org',
-                VBI_STAKING_CONTRACT: "staking.vbidev.testnet",
-                VBI_FT_CONTRACT: "ft.vbidev.testnet",
+                VBI_STAKING_CONTRACT: "staking.duongnh.testnet",
+                VBI_FT_CONTRACT: "ft.duongnh.testnet",
                 VBI_FAUCET_FT_CONTRACT: "faucet-vbic.vbidev.testnet",
                 VBI_SIMPLE_POOL_CONTRACT: 'simple-pool.vbidev.testnet',
                 WRAP_NEAR_CONTRACT: "wrap.testnet"

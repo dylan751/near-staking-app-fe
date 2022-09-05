@@ -100,7 +100,7 @@ function StakingPage() {
         if (!stakeValue || stakeValue <= 0 || stakeValue > balance) return;
         setStakeLoading(true);
         try {
-            await stakeToken(parseTokenAmount(stakeValue, getTokenMetadata("VBIC").decimals).toLocaleString('fullwide', {useGrouping:false}))
+            await stakeToken(parseTokenAmount(stakeValue, getTokenMetadata("VBIC").decimals).toLocaleString())
         } catch (e) {
             console.log("Error", e);
         } finally {
@@ -113,7 +113,7 @@ function StakingPage() {
       if (!unstakeValue || unstakeValue <= 0 || unstakeValue > parseTokenWithDecimals(stakingAccount.stakeBalance, getTokenMetadata("VBIC").decimals)) return;
       setUnstakeLoading(true);
       try {
-          await unstake(parseTokenAmount(unstakeValue, getTokenMetadata("VBIC").decimals).toLocaleString('fullwide', {useGrouping:false}))
+          await unstake(parseTokenAmount(unstakeValue, getTokenMetadata("VBIC").decimals).toLocaleString())
       } catch (e) {
           console.log("Error", e);
       } finally {
