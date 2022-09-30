@@ -3,7 +3,8 @@ import { Layout, Button, Dropdown, Menu } from "antd";
 import {login, logout, wallet} from "~/utils/near";
 import {matchPath, useLocation, Link, useHistory} from "react-router-dom";
 // @ts-ignore
-import logo from "~/assets/imgs/vbi.png";
+// import logo from "~/assets/imgs/vbi.png";
+import logo from "~/assets/imgs/d2.jpg";
 // @ts-ignore
 import near from "~/assets/imgs/brand-icon.png";
 import { Discord, Telegram, Twitter, Medium } from "~components/icons/Social";
@@ -42,8 +43,8 @@ const MainLayout = (props: any) => {
               <Header className={"padding-0-15 flex flex-row text-white justify-center items-center bg-color border-b border-gray-900"}>
                   <div style={{width: 150}}>
                       <Link to={"/"} className={"flex justify-start items-center"}>
-                          <img src={logo} style={{width: 40, height: 40, marginRight: 15}} alt=""/>
-                          <span className={"text-2xl font-extrabold sm:hidden xs:hidden"}>VBI DEV</span>
+                          <img src={logo} style={{width: 40, height: 40, marginRight: 15, objectFit: 'cover'}} alt=""/>
+                          <span className={"text-2xl font-extrabold sm:hidden xs:hidden"}>Zuong</span>
                       </Link>
                   </div>
                   <div className={"flex-1 xs:hidden sm:hidden md:hidden"}>
